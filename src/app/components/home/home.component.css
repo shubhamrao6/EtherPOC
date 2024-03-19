@@ -1,4 +1,4 @@
-.example-card {
+.example-card, .card-image {
     max-width: 400px;
     min-height: 200px;
     text-align: center;

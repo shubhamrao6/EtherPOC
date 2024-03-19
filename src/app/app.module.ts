@@ -13,6 +13,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 import { HomeComponent } from './components/home/home.component';
 import { QwickCloudComponent } from './components/qwick-cloud/qwick-cloud.component';
 import { CloudTrekComponent } from './components/cloud-trek/cloud-trek.component';
@@ -40,6 +43,9 @@ import { CashApiComponent } from './components/cash-api/cash-api.component';
     MatSidenavModule,
     MatListModule,
     MatCardModule,
+    MatInputModule,
+    MatFormFieldModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

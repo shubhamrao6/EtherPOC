@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
       <div class="col-12 col-md-6 col-lg-3">
-        <mat-card class="example-card pt-2" routerLink="QwickCloud" (click)="routeToComponent('QwickCloud')">
+        <mat-card class="example-card pt-2" [ngStyle]="{'background-color': (provisioned) ? '#C3DED6' : '#ffffff'}" (click)="executeAction('QwickCloud')">
           <img mat-card-md-image src="../../../assets/QwickCloud_Icon.svg"  alt="QwickCloud Icon">
           <mat-card-header>
             <mat-card-title>QwickCloud</mat-card-title>
@@ -20,13 +20,21 @@
             <p>{{longText}}</p>
           </mat-card-content> -->
           <mat-card-actions>
-            <button mat-button>PROVISION </button><mat-icon>arrow_right_alt</mat-icon>
+            <button mat-button (click)="routeToComponent('QwickCloud')" *ngIf="!provisioned">PROVISION </button><mat-icon *ngIf="!provisioned">arrow_right_alt</mat-icon>
+            <button mat-button (click)="routeToComponent('QwickCloud')" *ngIf="provisioned">PROVISIONED </button><mat-icon *ngIf="provisioned">check</mat-icon>
             <!-- <button mat-button>SHARE</button> -->
           </mat-card-actions>
         </mat-card>
+        <div class="container card-image mt-5" *ngIf="provisioned">
+          <div class="row">
+            <div class="col">
+              <img mat-card-md-image src="../../../assets/icons/icons8-azure-240.png"  alt="QwickCloud Icon">
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-12 col-md-6 col-lg-3">
-        <mat-card class="example-card pt-2" routerLink="CloudTrek" (click)="routeToComponent('CloudTrek')">
+        <mat-card class="example-card pt-2" [ngStyle]="{'background-color': (migrated) ? '#D7DDFD' : '#ffffff'}" (click)="executeAction('CloudTrek')">
           <img mat-card-md-image src="../../../assets/CloudTrek_Icon.svg"  alt="CloudTrek Icon">
           <mat-card-header>
             <mat-card-title>CloudTrek</mat-card-title>
@@ -37,13 +45,21 @@
             <p>{{longText}}</p>
           </mat-card-content> -->
           <mat-card-actions>
-            <button mat-button>MIGRATE </button><mat-icon>arrow_right_alt</mat-icon>
+            <button mat-button (click)="routeToComponent('CloudTrek')" *ngIf="!migrated">MIGRATE </button><mat-icon *ngIf="!migrated">arrow_right_alt</mat-icon>
+            <button mat-button (click)="routeToComponent('CloudTrek')" *ngIf="migrated">MIGRATED </button><mat-icon *ngIf="migrated">check</mat-icon>
             <!-- <button mat-button>SHARE</button> -->
           </mat-card-actions>
         </mat-card>
+        <div class="container card-image mt-5" *ngIf="migrated">
+          <div class="row">
+            <div class="col">
+              <img mat-card-md-image src="../../../assets/icons/icons8-excel-240.png"  alt="QwickCloud Icon">
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-12 col-md-6 col-lg-3">
-        <mat-card class="example-card pt-2" routerLink="ApiFi" (click)="routeToComponent('ApiFi')">
+        <mat-card class="example-card pt-2" [ngStyle]="{'background-color': (apified) ? '#FBE8A3' : '#ffffff'}" (click)="executeAction('ApiFi')">
           <img mat-card-md-image src="../../../assets/ApiFi_Icon.svg"  alt="ApiFi Icon">
           <mat-card-header>
             <mat-card-title>ApiFi</mat-card-title>
@@ -54,13 +70,21 @@
             <p>{{longText}}</p>
           </mat-card-content> -->
           <mat-card-actions>
-            <button mat-button>APIFI </button><mat-icon>arrow_right_alt</mat-icon>
+            <button mat-button (click)="routeToComponent('ApiFi')" *ngIf="!apified">APIFI </button><mat-icon *ngIf="!apified">arrow_right_alt</mat-icon>
+            <button mat-button (click)="routeToComponent('ApiFi')" *ngIf="apified">APIFIED </button><mat-icon *ngIf="apified">check</mat-icon>
             <!-- <button mat-button>SHARE</button> -->
           </mat-card-actions>
         </mat-card>
+        <div class="container card-image mt-5" *ngIf="apified">
+          <div class="row">
+            <div class="col">
+              <img mat-card-md-image src="../../../assets/icons/1679583758253.png"  alt="QwickCloud Icon">
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-12 col-md-6 col-lg-3">
-        <mat-card class="example-card pt-2" routerLink="CashApi" (click)="routeToComponent('CashApi')">
+        <mat-card class="example-card pt-2" [ngStyle]="{'background-color': (monetized) ? '#0CA789' : '#ffffff'}" (click)="executeAction('CashApi')">
           <img mat-card-md-image src="../../../assets/CashApi_Icon.svg"  alt="CashAPI Icon">
           <mat-card-header>
             <mat-card-title>CashApi</mat-card-title>
@@ -71,10 +95,18 @@
             <p>{{longText}}</p>
           </mat-card-content> -->
           <mat-card-actions>
-            <button mat-button>MONETIZE </button><mat-icon>arrow_right_alt</mat-icon>
+            <button mat-button (click)="routeToComponent('CashApi')" *ngIf="!monetized">MONETIZE </button><mat-icon *ngIf="!monetized">arrow_right_alt</mat-icon>
+            <button mat-button (click)="routeToComponent('CashApi')" *ngIf="monetized">MONETIZED </button><mat-icon *ngIf="monetized">check</mat-icon>
             <!-- <button mat-button>SHARE</button> -->
           </mat-card-actions>
         </mat-card>
+        <div class="container card-image mt-5" *ngIf="monetized">
+          <div class="row">
+            <div class="col">
+              <img mat-card-md-image src="../../../assets/icons/Stripe_Logo,_revised_2016.svg"  alt="QwickCloud Icon">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 </div>
