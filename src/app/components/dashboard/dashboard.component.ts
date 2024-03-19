@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,8 +14,11 @@ export class DashboardComponent {
   sidenav!: MatSidenav;
   isMobile= true;
   isCollapsed = true;
+  // longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
+  // from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
+  // originally bred for hunting.`;
 
-  constructor(private observer: BreakpointObserver) {}
+  constructor(private observer: BreakpointObserver, private router: Router) {}
 
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
@@ -24,6 +28,7 @@ export class DashboardComponent {
         this.isMobile = false;
       }
     });
+    this.router.navigate(['home']);
   }
 
   toggleMenu() {

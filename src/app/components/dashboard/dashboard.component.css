@@ -3,7 +3,20 @@
 }
 
 h2 {padding: 1rem;} */
+.example-card {
+    max-width: 400px;
+    min-height: 200px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: 1s
+  }
 
+  .example-card:hover {
+    top: -10px;
+  }
+  
 mat-toolbar{
     position:fixed;
     top:0;
