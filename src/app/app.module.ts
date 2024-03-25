@@ -15,6 +15,11 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 import { HomeComponent } from './components/home/home.component';
 import { QwickCloudComponent } from './components/qwick-cloud/qwick-cloud.component';
@@ -44,7 +49,11 @@ import { CashApiComponent } from './components/cash-api/cash-api.component';
     MatListModule,
     MatCardModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatDatepickerModule
 
   ],
   providers: [],

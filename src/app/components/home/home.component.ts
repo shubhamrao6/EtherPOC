@@ -1,29 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SampleDataService } from 'src/app/services/sample-data.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   provisioned = false;
+  provisionedResourceIcon = "";
   migrated = false;
   apified = false;
   monetized = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private data: SampleDataService) {}
+
+  ngOnInit(): void {
+    console.log(this.data.provisionedResource);
+    if (this.data.provisionedResource.provider != "") {
+      this.provisioned = !this.provisioned;
+      this.provisionedResourceIcon = this.data.provisionedResource.icon;
+    }
+  }
 
   routeToComponent(component: string){
     this.router.navigate([component]);
   }
 
   executeAction(component: string){
-    if (component == "QwickCloud"){
-      this.provisioned = !this.provisioned;
-    } 
-    else if (component == "CloudTrek"){
+    // if (component == "QwickCloud"){
+    //   this.provisioned = !this.provisioned;
+    // } 
+    if (component == "CloudTrek"){
       this.migrated = !this.migrated;
     }
     else if (component == "ApiFi"){
