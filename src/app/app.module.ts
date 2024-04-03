@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -53,7 +54,8 @@ import { CashApiComponent } from './components/cash-api/cash-api.component';
     MatSelectModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    FormsModule
 
   ],
   providers: [],

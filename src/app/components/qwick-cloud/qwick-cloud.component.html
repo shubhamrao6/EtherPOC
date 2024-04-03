@@ -9,7 +9,7 @@
 </header>
 <div class="container">
   <div class="row">
-    <div class="col mt-5">
+    <div class="col mt-3">
       <div class="container text-center">
         <div class="row">
           <!-- <mat-form-field appearance="outline">
@@ -21,7 +21,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Provider</mat-label>
             <mat-select [(value)]="currentProvider"> <!-- [disabled]="disableSelect.value" -->
-              <mat-option *ngFor="let provider of cloudProviders" [value]="provider">
+              <mat-option *ngFor="let provider of cloudProviders" [value]="provider" [disabled]="provider.provider != 'Azure'">
                 <img src="{{provider.icon}}" alt="" style="width:24px;height:24px;">
                 {{provider.provider}}
               </mat-option>
@@ -54,23 +54,32 @@
             </mat-select>
           </mat-form-field>
         </div>
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Database Name</mat-label>
+            <input matInput [(ngModel)]="databaseName" placeholder="Enter Database Name">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </div>
       </div>
     </div>
     <div class="col">
       <div class="container align-center text-center">
         <div class="row">
           <div class="col">
+            
             <img mat-card-md-image src="../../../assets/icons/icons8-azure-240.png"  alt="Azure Icon" class="m-2">
           </div>
-          <div class="col">
+          <!-- <div class="col">
             <img mat-card-md-image src="../../../assets/icons/icons8-amazon-web-services-240.png"  alt="Amazon Icon" class="m-2">
-          </div>
+          </div> -->
           <div class="col">
             <img mat-card-md-image src="../../../assets/icons/icons8-google-cloud-240.png"  alt="Google Icon" class="m-2">
           </div>
         </div>
         <div class="row">
-          <div class="col">
+          <!-- <div class="col">
             <img mat-card-md-image src="../../../assets/icons/pngegg.png"  alt="SQL Server Icon" class="m-2">
           </div>
           <div class="col">
@@ -78,53 +87,72 @@
           </div>
           <div class="col">
             <img mat-card-md-image src="../../../assets/icons/icons8-postgresql-240.png"  alt="MongoDb Icon" class="m-2">
+          </div> -->
+          <div class="col">
+            <img mat-card-md-image src="../../../assets/icons/icons8-amazon-web-services-240.png"  alt="Amazon Icon" class="m-2">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <button mat-stroked-button style="width: 100%;">Provision more resources</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row mt-5">
+  <!-- <div class="row mt-2">
     <div class="col">
       <h2 *ngIf="provisionedResources.length != 0">Provisioned Resource</h2>
     </div>
-    <div class="col">
-      <button mat-stroked-button style="width: 100%;">Provision more resources</button>
-    </div>
-  </div>
-  <div class="row mt-2">
-    <mat-expansion-panel *ngIf="provisionedResources.length != 0" expanded="true">
+  </div> -->
+  <div class="row mt-2" *ngIf="provisionedResources.length != 0">
+    <!-- <mat-expansion-panel *ngIf="provisionedResources.length != 0" expanded="true" class="example-headers-align" multi>
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          <img src="{{provisionedResources[0].icon}}" alt="" style="width:36px;height:36px;">
-        </mat-panel-title>
-        <mat-panel-description>
-          {{provisionedResources[0].provider}}
-          <!-- <mat-icon></mat-icon> -->
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <div class="container">
-        <div class="row">
-          <div class="col-4">
-            <p>Tier</p>
-            <h3 class="font-weight-bold">{{provisionedResources[0].tier}}</h3>
+        <mat-panel-title> -->
+          <!-- <img src="{{provisionedResources[0].icon}}" alt="" style="width:36px;height:36px;"> -->
+          <h2>Provisioned Resource</h2>
+        <!-- </mat-panel-title> -->
+        <!-- <mat-panel-description> -->
+          <!-- {{provisionedResources[0].provider}}
+          <img src="{{provisionedResources[0].icon}}" alt="" style="width:36px;height:36px;"> -->
+        <!-- </mat-panel-description> -->
+      <!-- </mat-expansion-panel-header> -->
+      <mat-card class="">
+        <mat-card-content>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <p>Provider:</p>
+                <img src="{{provisionedResources[0].icon}}" alt="" style="width:36px;height:36px;">
+                <!-- <h2 class="font-weight-bold">{{provisionedResources[0].provider}}</h2> -->
+              </div>
+              <div class="col">
+                <p>Tier:</p>
+                <h2 class="font-weight-bold">{{provisionedResources[0].tier}}</h2>
+              </div>
+              <div class="col">
+                <p>Region:</p>
+                <h2 class="font-weight-bold">{{provisionedResources[0].region}}</h2>
+              </div>
+              <div class="col">
+                <p>DB Name:</p>
+                <h2 class="font-weight-bold">{{provisionedResources[0].databaseName}}</h2>
+              </div>
+              <div class="col">
+                <p>URL:</p>
+                <h2 class="font-weight-bold">{{provisionedResources[0].url}}</h2>
+              </div>
+            </div>
           </div>
-          <div class="col-4">
-            <p>Region</p>
-            <h3 class="font-weight-bold">{{provisionedResources[0].region}}</h3>
-          </div>
-          <div class="col-4">
-            <p>URL</p>
-            <h3 class="font-weight-bold">{{provisionedResources[0].url}}</h3>
-          </div>
-        </div>
-      </div>
-    </mat-expansion-panel>
+        </mat-card-content>
+      </mat-card>
+    <!-- </mat-expansion-panel> -->
   </div>
   <div class="row mt-5 footer">
     <div class="col">
       <footer>
         <button *ngIf="provisionedResources.length == 0" mat-raised-button (click)="provisionResource()" 
-        [disabled]='selectedPricingTier == "" || selectedRegion == ""'
+        [disabled]='selectedPricingTier == "" || selectedRegion == "" || databaseName == ""'
         style="width: 100%; height: 50px; background-color: #C3DED6;" 
         color="#C3DED6">Provision Resource <i class="fa fa-arrow-right" aria-hidden="true"></i>
       </button>

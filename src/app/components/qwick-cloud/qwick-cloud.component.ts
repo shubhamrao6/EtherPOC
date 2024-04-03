@@ -19,6 +19,7 @@ export class QwickCloudComponent implements OnInit {
   };
   selectedPricingTier = "";
   selectedRegion = "";
+  databaseName = "";
 
   provisionedResources = [] as any[];
 
@@ -41,6 +42,7 @@ export class QwickCloudComponent implements OnInit {
     this.data.provisionedResource.icon = this.currentProvider.icon;
     this.data.provisionedResource.tier = this.selectedPricingTier;
     this.data.provisionedResource.region = this.selectedRegion;
+    this.data.provisionedResource.databaseName = this.databaseName;
     this.route.navigate(['home']);
   }
 
