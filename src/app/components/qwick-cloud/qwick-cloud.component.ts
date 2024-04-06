@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 import { SampleDataService } from 'src/app/services/sample-data.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class QwickCloudComponent implements OnInit {
 
   provisionedResources = [] as any[];
 
-  constructor(private data: SampleDataService, private route: Router) {}
+  constructor(private data: SampleDataService, private route: Router, private api: ApiService) {}
 
   ngOnInit(): void {
     this.cloudProviders = this.data.data_qc;
@@ -33,6 +34,11 @@ export class QwickCloudComponent implements OnInit {
       this.provisionedResources.push(this.data.provisionedResource);
     }
     console.log("Provisioned Resource", this.provisionedResources);
+    this.api.QC_Resource_Properties("a8c4a7f1-4c6b-42c7-babb-71d16fadd2c3").subscribe({
+      next: (v) => console.log(v),
+      error: (e) => console.error(e),
+      complete: () => console.info('complete') 
+    });
   }
 
   provisionResource(){

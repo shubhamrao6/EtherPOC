@@ -1,0 +1,28 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": " Query Data",
+    "description": "This API is used for performing CRUD operations on all the Entities",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "/api/query/database/a8c4a7f1-4c6b-42c7-babb-71d16fadd2c3/table/test212": {
+      "get": {
+        "tags": [
+          "Data"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://ether-poc.azurewebsites.net",
+      "variables": {}
+    }
+  ]
+}

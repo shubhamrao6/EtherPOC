@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -55,7 +56,8 @@ import { CashApiComponent } from './components/cash-api/cash-api.component';
     MatCheckboxModule,
     MatExpansionModule,
     MatDatepickerModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [],
