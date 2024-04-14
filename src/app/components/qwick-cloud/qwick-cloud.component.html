@@ -140,7 +140,11 @@
               </div>
               <div class="col">
                 <p>URL:</p>
-                <h2 class="font-weight-bold">{{provisionedResources[0].url}}</h2>
+                <h2 class="font-weight-bold">{{api.provisionedResourceDetails.properties.sqlEndpointProperties.connectionString}}</h2>
+              </div>
+              <div class="col">
+                <p>Status:</p>
+                <h2 class="font-weight-bold">{{api.provisionedResourceDetails.properties.sqlEndpointProperties.provisioningStatus}}</h2>
               </div>
             </div>
           </div>

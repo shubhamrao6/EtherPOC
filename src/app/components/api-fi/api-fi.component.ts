@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Route, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { SampleDataService } from 'src/app/services/sample-data.service';
+import { SwaggerPopupComponent } from './swagger-popup/swagger-popup.component';
 
 declare const SwaggerUIBundle: any;
 
@@ -16,13 +18,14 @@ export class ApiFiComponent implements OnInit {
 
   openapiJson: any;
 
-  constructor(private data: SampleDataService, private route: Router, private api: ApiService) {}
+  constructor(private data: SampleDataService, private route: Router, private api: ApiService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.api.AF_OpenapiTempelate().subscribe({
       next: (v) => {
         console.log(v);
         this.openapiJson = v;
+        this.api.openapiJson = v;
       },
       error: (e) => console.error(e),
       complete: () => {
@@ -51,6 +54,14 @@ export class ApiFiComponent implements OnInit {
     a.setAttribute('href', 'data:text/plain;charset=utf-u,'+encodeURIComponent(text));
     a.setAttribute('download', filename);
     a.click()
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(SwaggerPopupComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

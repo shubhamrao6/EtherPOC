@@ -33,10 +33,10 @@ export class SampleDataService {
 ];
   provisionedResource = {
     "provider": "",
-    "icon": "",
+    "icon": "../../assets/icons/icons8-azure-144.png",
     "urls": [],
-    "tier":"",
-    "region":"",
+    "tier":"Free",
+    "region":"Ireland",
     "databaseName": ""
   };
 

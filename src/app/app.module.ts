@@ -21,13 +21,15 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-
-
+import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
 import { HomeComponent } from './components/home/home.component';
 import { QwickCloudComponent } from './components/qwick-cloud/qwick-cloud.component';
 import { CloudTrekComponent } from './components/cloud-trek/cloud-trek.component';
 import { ApiFiComponent } from './components/api-fi/api-fi.component';
 import { CashApiComponent } from './components/cash-api/cash-api.component';
+import { CsvTableComponent } from './components/cloud-trek/csv-table/csv-table.component';
+import { SwaggerPopupComponent } from './components/api-fi/swagger-popup/swagger-popup.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { CashApiComponent } from './components/cash-api/cash-api.component';
     QwickCloudComponent,
     CloudTrekComponent,
     ApiFiComponent,
-    CashApiComponent
+    CashApiComponent,
+    CsvTableComponent,
+    SwaggerPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,9 @@ import { CashApiComponent } from './components/cash-api/cash-api.component';
     MatExpansionModule,
     MatDatepickerModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatDialogModule
 
   ],
   providers: [],

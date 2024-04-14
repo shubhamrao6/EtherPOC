@@ -9,6 +9,43 @@ export class ApiService {
 
   baseURL = "https://ether-poc.azurewebsites.net/api/";
 
+  // QwickCloud
+  provisionedResource: any = {
+    "id": "a8c4a7f1-4c6b-42c7-babb-71d16fadd2c3",
+    "type": "",
+    "displayName": "",
+    "description": "",
+    "workspaceId": ""
+  };
+  provisionedResourceDetails: any = {
+    "id": "",
+    "type": "",
+    "displayName": "",
+    "description": "",
+    "workspaceId": "",
+    "properties": {
+        "oneLakeTablesPath": "",
+        "oneLakeFilesPath": "",
+        "sqlEndpointProperties": {
+            "connectionString": "",
+            "id": "",
+            "provisioningStatus": ""
+        }
+    }
+  };
+
+  // CloudTrek
+  fileUploadResponse: any = {
+    "value": "",
+    "Check-After": ""
+  };
+
+  uploadedData: any;
+  columnsToDisplay: any;
+
+  // Apifi
+  openapiJson: any;
+
   constructor(private http: HttpClient) { }
 
   // QwickCloud DB Provisioning
@@ -32,7 +69,7 @@ export class ApiService {
 
   // CloudTrek CSV Upload
   CT_Migrate_CSV(file: File, dbName: String, dbId: String){
-      return this.http.post(this.baseURL + dbId + "/" + dbName, file);
+      return this.http.post(this.baseURL + "/migrate-data/" + dbId + "/" + dbName, file);
   }
 
   CT_Query_Db(dbName: String, dbId: String) {
