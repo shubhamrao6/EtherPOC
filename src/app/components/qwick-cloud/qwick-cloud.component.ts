@@ -21,6 +21,7 @@ export class QwickCloudComponent implements OnInit {
   selectedPricingTier = "";
   selectedRegion = "";
   databaseName = "";
+  isDataFetched = true;
 
   provisionedResources = [] as any[];
 
@@ -28,13 +29,14 @@ export class QwickCloudComponent implements OnInit {
 
   ngOnInit(): void {
     this.cloudProviders = this.data.data_qc;
-    // console.log(this.data.data_qc);
+    console.log(this.data.data_qc);
     // console.log(this.data.provisionedResource);
     if (this.data.provisionedResource.provider != ""){
       this.provisionedResources.push(this.data.provisionedResource);
     }
     // console.log("Provisioned Resource", this.provisionedResources);
     if (this.api.provisionedResource.id != "") {
+      this.isDataFetched = false;
       this.api.QC_Resource_Properties(this.api.provisionedResource.id).subscribe({
         next: (v) => {
           this.api.provisionedResourceDetails = v;
@@ -52,7 +54,7 @@ export class QwickCloudComponent implements OnInit {
           this.databaseName = this.api.provisionedResourceDetails.displayName;
           this.provisionedResources.push(this.data.provisionedResource);
           console.log(this.provisionResource);
-
+          this.isDataFetched = true;
         } 
       });
     }
@@ -61,6 +63,7 @@ export class QwickCloudComponent implements OnInit {
   provisionResource(){
     // console.log(this.currentProvider);
     // console.log(this.databaseName);
+    this.isDataFetched = false;
     this.api.QC_Resource_Provisioning(this.databaseName).subscribe({
       next: (pr) => {
         this.api.provisionedResource = pr;
@@ -70,6 +73,7 @@ export class QwickCloudComponent implements OnInit {
       complete: () => {
         this.api.QC_Resource_Properties(this.api.provisionedResource.id).subscribe({
           next: (v) => {
+            this.isDataFetched = false;
             this.api.provisionedResourceDetails = v;
             console.log("Provisioned Resource Details: ", v);
           },
@@ -81,6 +85,7 @@ export class QwickCloudComponent implements OnInit {
             this.data.provisionedResource.region = this.selectedRegion;
             this.data.provisionedResource.databaseName = this.databaseName;
             this.route.navigate(['home']);
+            this.isDataFetched = true;
           } 
         });
       } 

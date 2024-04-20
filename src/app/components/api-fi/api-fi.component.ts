@@ -18,7 +18,7 @@ export class ApiFiComponent implements OnInit {
 
   openapiJson: any;
 
-  constructor(private data: SampleDataService, private route: Router, private api: ApiService, public dialog: MatDialog) {}
+  constructor(private data: SampleDataService, private route: Router, public api: ApiService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.api.AF_OpenapiTempelate().subscribe({

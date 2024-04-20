@@ -23,6 +23,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 import { HomeComponent } from './components/home/home.component';
 import { QwickCloudComponent } from './components/qwick-cloud/qwick-cloud.component';
 import { CloudTrekComponent } from './components/cloud-trek/cloud-trek.component';
@@ -63,7 +65,8 @@ import { SwaggerPopupComponent } from './components/api-fi/swagger-popup/swagger
     FormsModule,
     HttpClientModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [],

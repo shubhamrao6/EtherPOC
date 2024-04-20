@@ -23,7 +23,7 @@ export class CloudTrekComponent implements OnInit {
 
   fileToUpload: File | null = null;
 
-  constructor(private data: SampleDataService, private route: Router, public api: ApiService, public dialog: MatDialog) {}
+  constructor(public data: SampleDataService, private route: Router, public api: ApiService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.dataSources = this.data.data_ct;
@@ -48,6 +48,7 @@ export class CloudTrekComponent implements OnInit {
   }
 
   migrateCSV(){
+    this.api.tableName = this.currentSource.tableName
     if (this.fileToUpload != null)
     this.api.CT_Migrate_CSV(this.fileToUpload, this.api.provisionedResourceDetails.displayName, this.api.provisionedResourceDetails.id).subscribe({
       next: (v) => {

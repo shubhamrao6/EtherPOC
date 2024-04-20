@@ -35,6 +35,9 @@ export class ApiService {
   };
 
   // CloudTrek
+
+  tableName = "test212"
+
   fileUploadResponse: any = {
     "value": "",
     "Check-After": ""
