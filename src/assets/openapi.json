@@ -6,7 +6,7 @@
     "version": "1.0.0.0"
   },
   "paths": {
-    "/api/query/database/a8c4a7f1-4c6b-42c7-babb-71d16fadd2c3/table/test212": {
+    "path": {
       "get": {
         "tags": [
           "Data"

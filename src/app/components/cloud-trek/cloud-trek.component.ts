@@ -23,23 +23,30 @@ export class CloudTrekComponent implements OnInit {
 
   fileToUpload: File | null = null;
 
+  isDataFetched = true;
+
   constructor(public data: SampleDataService, private route: Router, public api: ApiService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.dataSources = this.data.data_ct;
-    this.api.CT_Query_Db("test212", "a8c4a7f1-4c6b-42c7-babb-71d16fadd2c3").subscribe({
-      next: (v:any) => {
-        console.log(v)
-        this.columnsToDisplay = Object.keys(v.value[0]);
-        this.api.uploadedData = v;
-        this.api.columnsToDisplay = Object.keys(v.value[0]);
-      },
-      error: (e) => console.error(e),
-      complete: () => {
-        console.info('complete')
-        console.log(this.columnsToDisplay);
-      } 
-    });
+    if (this.api.provisionedResource.id != "" && this.api.tableName != ""){
+      this.isDataFetched = false;
+      this.api.CT_Query_Db(this.api.tableName, this.api.provisionedResource.id).subscribe({
+        next: (v:any) => {
+          console.log(v)
+          this.columnsToDisplay = Object.keys(v.value[0]);
+          this.api.uploadedData = v;
+          this.api.columnsToDisplay = Object.keys(v.value[0]);
+        },
+        error: (e) => console.error(e),
+        complete: () => {
+          console.info('complete')
+          console.log(this.columnsToDisplay);
+          this.isDataFetched = true;
+          this.currentSource.tableName = this.api.tableName
+        } 
+      });
+    }
   }
 
   csvInputChange(fileInputEvent: any) {
@@ -48,18 +55,28 @@ export class CloudTrekComponent implements OnInit {
   }
 
   migrateCSV(){
-    this.api.tableName = this.currentSource.tableName
-    if (this.fileToUpload != null)
-    this.api.CT_Migrate_CSV(this.fileToUpload, this.api.provisionedResourceDetails.displayName, this.api.provisionedResourceDetails.id).subscribe({
-      next: (v) => {
-        this.api.fileUploadResponse = v;
-        console.log(v);
-      },
-      error: (e) => console.error(e),
-      complete: () => {
-
-      } 
-    });
+    // this.api.tableName = this.currentSource.tableName
+    if (this.fileToUpload != null){
+      this.isDataFetched = false;
+      this.api.CT_Migrate_CSV(this.fileToUpload, this.currentSource.tableName.toLowerCase(), this.api.provisionedResourceDetails.id).subscribe({
+        next: (v) => {
+          this.api.fileUploadResponse = v;
+          console.log(v);
+        },
+        error: (e) => console.error(e),
+        complete: () => {
+          this.api.tableName =  this.currentSource.tableName.toLowerCase();
+          setTimeout(() => 
+            {
+              this.route.navigate(['home']);
+              this.isDataFetched = true;
+            },
+            15000);
+          // this.route.navigate(['home']);
+          // this.isDataFetched = true;
+        } 
+      });
+    }
   }
 
   openDialog() {

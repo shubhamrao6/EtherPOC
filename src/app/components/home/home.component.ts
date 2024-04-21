@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 import { SampleDataService } from 'src/app/services/sample-data.service';
 
 @Component({
@@ -15,13 +16,16 @@ export class HomeComponent implements OnInit {
   apified = false;
   monetized = false;
 
-  constructor(private router: Router, private data: SampleDataService) {}
+  constructor(private router: Router, private data: SampleDataService, private api: ApiService) {}
 
   ngOnInit(): void {
     console.log(this.data.provisionedResource);
     if (this.data.provisionedResource.provider != "") {
       this.provisioned = !this.provisioned;
       this.provisionedResourceIcon = this.data.provisionedResource.icon;
+    }
+    if (this.api.uploadedData != null) {
+      this.executeAction("CloudTrek");
     }
   }
 

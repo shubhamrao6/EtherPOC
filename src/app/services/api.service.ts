@@ -11,7 +11,7 @@ export class ApiService {
 
   // QwickCloud
   provisionedResource: any = {
-    "id": "a8c4a7f1-4c6b-42c7-babb-71d16fadd2c3",
+    "id": "a8c4a7f1-4c6b-42c7-babb-71d16fadd2c3", //a8c4a7f1-4c6b-42c7-babb-71d16fadd2c3
     "type": "",
     "displayName": "",
     "description": "",
@@ -36,7 +36,7 @@ export class ApiService {
 
   // CloudTrek
 
-  tableName = "test212"
+  tableName = "test212" //test212
 
   fileUploadResponse: any = {
     "value": "",
@@ -48,6 +48,7 @@ export class ApiService {
 
   // Apifi
   openapiJson: any;
+  isApified = false;
 
   constructor(private http: HttpClient) { }
 

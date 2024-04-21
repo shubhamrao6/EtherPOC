@@ -72,6 +72,22 @@ export class SampleDataService {
       "icon": "../../assets/icons/icons8-postgresql-240.png",
       "tableName": ""
     }
-];
+  ];
+
+  // ApiFi Sample
+  apiTypes = [
+    {
+      "name": "REST",
+      "icon": "../../assets/icons/1679583758253.png"
+    },
+    {
+      "name": "GraphQL",
+      "icon": "../../assets/icons/icons8-graphql-an-open-source-data-query-and-manipulation-language-for-api-96.png"
+    },
+    {
+      "name": "RestAPI",
+      "icon": "../../assets/icons/icon-soap.png"
+    },
+  ];
 
 }

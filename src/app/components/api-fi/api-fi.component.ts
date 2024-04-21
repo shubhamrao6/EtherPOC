@@ -14,13 +14,17 @@ declare const SwaggerUIBundle: any;
 })
 export class ApiFiComponent implements OnInit {
 
-  path = "/api/query/database/a8c4a7f1-4c6b-42c7-babb-71d16fadd2c3/table/test324324"
+  path = "/api/query/database/a8c4a7f1-4c6b-42c7-babb-71d16fadd2c3/table/ll3"
+
+  apiTypes: any;
+  selectedApiType = "";
 
   openapiJson: any;
 
   constructor(private data: SampleDataService, private route: Router, public api: ApiService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.apiTypes = this.data.apiTypes;
     this.api.AF_OpenapiTempelate().subscribe({
       next: (v) => {
         console.log(v);
@@ -30,7 +34,8 @@ export class ApiFiComponent implements OnInit {
       error: (e) => console.error(e),
       complete: () => {
         console.info('complete');
-        // this.openapiJson['paths'] = "";
+        this.openapiJson['paths'][this.path] = this.openapiJson['paths']['path'];
+        delete this.openapiJson['paths']['path'];
         console.log(this.openapiJson);
         // this.saveText( JSON.stringify(this.openapiJson), "./../../assets/oa.json" );
         const ui = SwaggerUIBundle({

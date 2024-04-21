@@ -42,7 +42,7 @@
         <div class="row">
           <mat-form-field appearance="outline">
             <mat-label>Table Name</mat-label>
-            <input [(ngModel)]="currentSource.tableName" matInput placeholder="Enter Table Name" [disabled]="currentSource.source != 'CSV'">
+            <input [(ngModel)]="currentSource.tableName" matInput placeholder="Enter Table Name" [disabled]="currentSource.source != 'CSV'|| api.tableName != ''">
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Hint</mat-hint> -->
           </mat-form-field>
@@ -84,8 +84,8 @@
       </div>
     </div>
   </div>
-  
-  <div class="row mt-2">
+  <div class="mt-2" *ngIf="!isDataFetched"><mat-spinner></mat-spinner></div>
+  <div class="row mt-2" *ngIf="isDataFetched && api.tableName != ''">
     <h2>Migrated Data</h2>
     <mat-card>
       <mat-card-content>
@@ -114,8 +114,14 @@
   <div class="row mt-5 footer">
     <div class="col">
       <footer>
-        <button mat-raised-button style="width: 100%; height: 50px; background-color: #D7DDFD;" color="#C3DED6" (click)="migrateCSV()">
+        <button *ngIf="api.tableName == ''" mat-raised-button  (click)="migrateCSV()"
+          [disabled]='currentSource.tableName == "" || fileToUpload == null || data.provisionedResource.databaseName == ""'
+          style="width: 100%; height: 50px; background-color: #D7DDFD;" color="#C3DED6">
           Migrate Data <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="api.tableName != ''" mat-raised-button  (click)="migrateCSV()" disabled
+          style="width: 100%; height: 50px; background-color: #D7DDFD;" color="#C3DED6">
+          MIGRATED <i class="fa fa-check" aria-hidden="true"></i>
         </button>
       </footer>
     </div>

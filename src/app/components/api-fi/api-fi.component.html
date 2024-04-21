@@ -23,19 +23,22 @@
         <div class="row">
           <mat-form-field appearance="outline">
             <mat-label>API Type</mat-label>
-            <input matInput placeholder="Choose API type">
-            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-            <!-- <mat-hint>Hint</mat-hint> -->
+            <mat-select [(value)]="selectedApiType"> <!-- [disabled]="disableSelect.value" -->
+              <mat-option *ngFor="let api of apiTypes" [value]="api" [disabled]="api.name != 'REST'">
+                <img src="{{api.icon}}" alt="" style="width:24px;height:24px;">
+                {{api.name}}
+              </mat-option>
+              <!-- <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+              <mat-option value="option3">Option 3</mat-option> -->
+            </mat-select>
           </mat-form-field>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <mat-form-field appearance="outline">
             <mat-label>Endpoint Operations</mat-label>
             <input matInput placeholder="Select endpoint operations">
-            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-            <!-- <mat-hint>Hint</mat-hint> -->
           </mat-form-field>
-        </div>
+        </div> -->
         
       </div>
     </div>

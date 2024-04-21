@@ -24,6 +24,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { HomeComponent } from './components/home/home.component';
 import { QwickCloudComponent } from './components/qwick-cloud/qwick-cloud.component';
@@ -66,8 +67,8 @@ import { SwaggerPopupComponent } from './components/api-fi/swagger-popup/swagger
     HttpClientModule,
     MatTableModule,
     MatDialogModule,
-    MatProgressSpinnerModule
-
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
