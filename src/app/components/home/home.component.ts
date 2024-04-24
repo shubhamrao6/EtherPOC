@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
       this.provisioned = !this.provisioned;
       this.provisionedResourceIcon = this.data.provisionedResource.icon;
     }
-    if (this.api.uploadedData != null) {
+    if (this.api.tableName != '') {
       this.executeAction("CloudTrek");
     }
     if (this.api.isApified){

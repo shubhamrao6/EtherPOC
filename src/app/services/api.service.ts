@@ -98,7 +98,7 @@ export class ApiService {
         'Content-Type': 'application/json',
       }),
     };
-    return this.http.post(this.baseURL + '/monetize/database/' + dbId + '/table/' + dbName, JSON.stringify(body), httpOptions)
+    return this.http.post(this.baseURL + 'monetize/database/' + dbId + '/table/' + dbName, JSON.stringify(body), httpOptions)
   }
 
 }
