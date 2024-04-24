@@ -90,4 +90,19 @@ export class SampleDataService {
     },
   ];
 
+  // CashApi Sample
+  paymentGateways = [
+    {
+      "name": "Stripe",
+      "icon": "../../assets/icons/Stripe_Logo,_revised_2016.svg"
+    },
+    {
+      "name": "PayPal",
+      "icon": "../../assets/icons/pngwing.com (2).png"
+    },
+    {
+      "name": "Razorpay",
+      "icon": "../../assets/icons/icons8-paypal-240.png"
+    },
+  ];
 }

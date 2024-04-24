@@ -27,6 +27,12 @@ export class HomeComponent implements OnInit {
     if (this.api.uploadedData != null) {
       this.executeAction("CloudTrek");
     }
+    if (this.api.isApified){
+      this.executeAction("ApiFi");
+    }
+    if (this.api.isMonetized){
+      this.executeAction("CashApi");
+    }
   }
 
   routeToComponent(component: string){

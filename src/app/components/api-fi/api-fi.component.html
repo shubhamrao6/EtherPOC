@@ -60,13 +60,14 @@
       </div>
     </div>
   </div>
-  <div class="row mt-2">
+  <div class="mt-2" *ngIf="!isDataFetched"><mat-spinner></mat-spinner></div>
+  <div class="row mt-2" *ngIf="api.isApified && isDataFetched">
     <h2>Apified Data</h2>
     <mat-card>
       <mat-card-content>
         <div class="container">
           <div class="row text-center">
-            <h3>Table Name API</h3>
+            <h3>{{api.tableName}} REST API</h3>
           </div>
           <div class="row">
             <button mat-stroked-button style="width: 100%;" (click)="openDialog()">Preview <i class="fa fa-eye" aria-hidden="true"></i></button>
@@ -79,7 +80,13 @@
   <div class="row mt-5 footer">
     <div class="col">
       <footer>
-        <button mat-raised-button style="width: 100%; height: 50px; background-color: #FBE8A3;" color="#C3DED6">Generate API <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+        <button mat-raised-button style="width: 100%; height: 50px; background-color: #FBE8A3;" 
+        *ngIf="!api.isApified" (click) = "apifi()" [disabled]='selectedApiType == ""'
+          color="#C3DED6">Generate API <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </button>
+        <button mat-raised-button style="width: 100%; height: 50px; background-color: #FBE8A3;" *ngIf="api.isApified"
+          color="#C3DED6" disabled>API GENERATED <i class="fa fa-check" aria-hidden="true"></i>
+        </button>
       </footer>
     </div>
   </div>
